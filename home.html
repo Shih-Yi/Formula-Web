@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>thankyou. - Inspired by nature</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: sans-serif;
+		}
+
+		body {
+			overflow-x: hidden;
+		}
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 27px 60px;
+			background-color: #F5F4EF;
+			position: relative;
+			z-index: 100;
+		}
+
+		.logo {
+			font-size: 30px;
+			font-weight: bold;
+		}
+
+		.nav {
+			display: flex;
+			gap: 25px;
+		}
+
+		.nav-item {
+			font-size: 16px;
+			text-decoration: none;
+			color: #333;
+		}
+
+		.icons {
+			display: flex;
+			gap: 15px;
+		}
+
+		.hero {
+			position: relative;
+			height: 794px;
+			width: 100%;
+			overflow: hidden;
+			display: flex;
+			background-color: black;
+		}
+
+		/* .hero-2 {
+			position: relative;
+			height: calc(100vh - 75px);
+			width: 100%;
+			overflow: hidden;
+			display: flex;
+		} */
+
+		.swiper {
+			width: 100%;
+			height: 100%;
+		}
+
+		.swiper-slide {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.swiper-slide img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.swiper-controls {
+			position: absolute;
+			bottom: 30px;
+			left: 0;
+			right: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 20px;
+			background-color: rgba(0, 0, 0, 0.3);
+			width: fit-content;
+			margin: 0 auto;
+			padding: 10px 15px;
+			border-radius: 30px;
+		}
+
+		.swiper-pagination {
+			position: static !important;
+			width: auto !important;
+			display: flex;
+			gap: 8px;
+			margin: 0 !important;
+		}
+
+		.swiper-pagination-bullet {
+			width: 6px !important;
+			height: 6px !important;
+			border-radius: 50% !important;
+			background: rgba(255, 255, 255, 0.5) !important;
+			opacity: 1;
+			margin: 0 !important;
+		}
+
+		.swiper-pagination-bullet-active {
+			background: white !important;
+		}
+
+		.swiper-button-next,
+		.swiper-button-prev {
+			position: static !important;
+			margin: 0 !important;
+			width: 20px !important;
+			height: 20px !important;
+			color: white !important;
+		}
+
+		.swiper-button-next:after,
+		.swiper-button-prev:after {
+			font-size: 12px !important;
+			font-weight: bold;
+		}
+
+		.product-container {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			max-width: 1800px;
+			margin: 0;
+		}
+
+		.left-product {
+			position: relative;
+			height: 70%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.left-product img {
+			height: 100%;
+			object-fit: contain;
+		}
+
+		.right-product {
+			position: relative;
+			height: 70%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.right-product img {
+			height: 100%;
+			object-fit: contain;
+		}
+
+		.content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			z-index: 10;
+			width: 100%;
+			color: white;
+		}
+
+		.content h1 {
+			font-size: 56px;
+			margin-bottom: 20px;
+			font-weight: normal;
+		}
+
+		.content p {
+			max-width: 500px;
+			margin: 0 auto 30px;
+			line-height: 1.6;
+		}
+
+		.shop-btn {
+			display: inline-block;
+			padding: 20px 0;
+			border: 1px solid white;
+			background-color: white;
+			color: black;
+			text-decoration: none;
+			font-size: 20px;
+			text-transform: uppercase;
+			letter-spacing: 3px;
+			font-weight: 700;
+			transition: all 0.3s;
+			border-radius: 100px;
+			width: fit-content;
+			padding-left: 40px;
+			padding-right: 40px;
+			font-family: 'Noto Sans JP', sans-serif;
+		}
+
+		.video-btn {
+			display: inline-block;
+			padding: 15px 0;
+			border: 1px solid black;
+			background-color: transparent;
+			color: black;
+			text-decoration: none;
+			font-size: 13px;
+			text-transform: uppercase;
+			letter-spacing: 3px;
+			font-weight: 300;
+			transition: all 0.3s;
+			width: fit-content;
+			padding-left: 23px;
+			padding-right: 23px;
+			font-family: 'Noto Sans JP', sans-serif;
+		}
+
+		.video-btn:hover {
+			background-color: black;
+			color: white;
+			border: 1px solid black;
+		}
+
+		/* Hide video controls */
+		video::-webkit-media-controls-timeline,
+		video::-webkit-media-controls-current-time-display,
+		video::-webkit-media-controls-time-remaining-display,
+		video::-webkit-media-controls-timeline,
+		video::-webkit-media-controls-play-button,
+		video::-webkit-media-controls-volume-slider,
+		video::-webkit-media-controls-mute-button,
+		video::-webkit-media-controls-fullscreen-button,
+		video::-webkit-media-controls-panel,
+		video::-webkit-media-controls {
+			display: none !important;
+		}
+
+		video::-webkit-media-controls-enclosure {
+			display: none !important;
+		}
+
+		video::-internal-media-controls-download-button {
+			display: none !important;
+		}
+
+		video::-webkit-media-controls-overlay-enclosure {
+			display: none !important;
+		}
+
+		.shop-btn:hover {
+			background-color: white;
+			color: #1A1A1A;
+		}
+
+		.slider-nav {
+			position: absolute;
+			bottom: 20px;
+			left: 0;
+			right: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.slider-dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background-color: rgba(255, 255, 255, 0.5);
+		}
+
+		.slider-dot.active {
+			background-color: white;
+		}
+
+		.slider-arrow {
+			position: absolute;
+			bottom: 20px;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: white;
+			font-size: 24px;
+			z-index: 10;
+		}
+
+		.prev {
+			left: 20px;
+		}
+
+		.next {
+			right: 20px;
+		}
+
+		.support {
+			position: fixed;
+			bottom: 20px;
+			left: 20px;
+			background-color: black;
+			color: white;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 10px 15px;
+			border-radius: 20px;
+			z-index: 100;
+		}
+
+		.support-icon {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: black;
+			font-size: 12px;
+		}
+
+		.promo-ticker {
+			/* border: 1px solid #878787; */
+			background-color: #f5f5f5;
+			padding: 24px 0;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.ticker-wrapper {
+			display: flex;
+			white-space: nowrap;
+			animation: ticker 10s linear infinite;
+			width: fit-content;
+		}
+
+		.ticker-item {
+			display: inline-flex;
+			align-items: center;
+			padding: 0 30px;
+			font-size: 14px;
+		}
+
+		.ticker-content {
+			display: flex;
+			animation: none;
+		}
+
+		@keyframes ticker {
+			100% {
+				transform: translate3d(0, 0, 0);
+			}
+
+			0% {
+				transform: translate3d(-10%, 0, 0);
+			}
+		}
+
+		.products-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 24px;
+			padding: 60px;
+			background-color: #fff;
+			border: 1px solid #1A1A1A;
+		}
+
+		.product-card {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		.product-image {
+			aspect-ratio: 1;
+			overflow: hidden;
+			background-color: #f5f5f5;
+		}
+
+		.product-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.3s ease;
+		}
+
+		.product-card:hover .product-image img {
+			transform: scale(1.05);
+		}
+
+		.product-info {
+			text-align: left;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.product-title {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 24px;
+			color: #1A1A1A;
+			font-weight: 300;
+			line-height: 1.2;
+		}
+
+		.product-description {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 15px;
+			color: #666;
+			line-height: 1.4;
+			margin-bottom: 8px;
+		}
+
+		.product-link {
+			font-family: 'Noto Sans JP', sans-serif;
+			display: inline-block;
+			font-size: 14px;
+			color: #1A1A1A;
+			text-decoration: none;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-weight: 300;
+			border: 1px solid #1A1A1A;
+			width: fit-content;
+			padding: 12px;
+			transition: all 0.3s ease;
+		}
+
+		.product-link:hover {
+			padding-right: 10px;
+		}
+
+		.content-title {
+			position: absolute;
+			z-index: 2;
+			margin-left: -60px;
+			width: 55%;
+			padding: 0 60px;
+			top: 50px;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding-bottom: 100px;
+		}
+
+		.content-title-text {
+			font-family: 'Noto Sans JP', sans-serif;
+			color: white;
+			font-size: 64px;
+			font-weight: 800;
+			line-height: 1.2;
+			letter-spacing: -1px;
+			margin-bottom: 0;
+		}
+
+		.content-image {
+			position: absolute;
+			right: -35px;
+			top: 20px;
+			width: 65%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding-right: 5px;
+		}
+
+		.bundles {
+			padding: 60px;
+			background-color: #fff;
+			border: 1px solid #1A1A1A;
+		}
+
+		.bundles-title {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 32px;
+			font-weight: 300;
+			color: #1A1A1A;
+			margin-bottom: 40px;
+		}
+
+		.bundles-grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 24px;
+		}
+
+		.bundle-card {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.bundle-image {
+			aspect-ratio: 1;
+			overflow: hidden;
+			background-color: #f5f5f5;
+		}
+
+		.bundle-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.3s ease;
+		}
+
+		.bundle-card:hover .bundle-image img {
+			transform: scale(1.05);
+		}
+
+		.bundle-info {
+			text-align: left;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.bundle-name {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 18px;
+			color: #1A1A1A;
+			font-weight: 300;
+		}
+
+		.bundle-subtitle {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 14px;
+			color: #666;
+		}
+
+		.bundle-price {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 14px;
+			color: #1A1A1A;
+			font-weight: 300;
+		}
+
+		.bundle-tag {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 12px;
+			color: #666;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		.testimonial {
+			display: flex;
+			height: 100vh;
+			background-color: #fff;
+			border: 1px solid #1A1A1A;
+		}
+
+		.testimonial-content {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 60px;
+			background-color: #1A1A1A;
+			color: white;
+			background-image: url(./testimonial-bg.jpg);
+			background-size: cover;
+			background-position: center;
+		}
+
+		.rating {
+			font-size: 24px;
+			margin-bottom: 20px;
+			letter-spacing: 5px;
+		}
+
+		.testimonial-title {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 48px;
+			font-weight: 300;
+			margin-bottom: 20px;
+			line-height: 1.2;
+		}
+
+		.testimonial-text {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 16px;
+			line-height: 1.6;
+			color: #999;
+		}
+
+		.testimonial-image {
+			flex: 1;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.testimonial-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.newsletter {
+			padding: 100px 60px;
+			background-color: #000;
+			border: 1px solid #1A1A1A;
+			color: white;
+		}
+
+		.newsletter-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 60px;
+		}
+
+		.newsletter-title {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 42px;
+			font-weight: 300;
+			color: white;
+			flex: 1;
+			line-height: 1.2;
+		}
+
+		.newsletter-form {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			flex: 1;
+		}
+
+		.form-row {
+			display: flex;
+			gap: 20px;
+		}
+
+		.form-input {
+			width: 100%;
+			padding: 15px;
+			background-color: transparent;
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			color: white;
+			font-size: 16px;
+		}
+
+		.form-input::placeholder {
+			color: rgba(255, 255, 255, 0.6);
+		}
+
+		.form-submit {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid white;
+			background-color: white;
+			color: black;
+			text-transform: uppercase;
+			font-weight: 500;
+			font-size: 16px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.form-submit:hover {
+			background-color: transparent;
+			color: white;
+		}
+
+		.form-checkbox {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			color: rgba(255, 255, 255, 0.6);
+			font-size: 14px;
+		}
+
+		.form-checkbox input {
+			width: 20px;
+			height: 20px;
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			background-color: transparent;
+		}
+
+		.impact {
+			padding: 60px;
+			background-color: #fff;
+			border: 1px solid #1A1A1A;
+		}
+
+		.impact h2 {
+			text-align: center;
+		}
+
+		.impact-title {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 32px;
+			font-weight: 300;
+			color: #1A1A1A;
+			margin-bottom: 40px;
+		}
+
+		.impact-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 24px;
+		}
+
+		.impact-card {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.impact-image {
+			aspect-ratio: 1;
+			overflow: hidden;
+			background-color: #f5f5f5;
+		}
+
+		.impact-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			filter: grayscale(100%);
+		}
+
+		.impact-card-title {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 24px;
+			font-weight: 300;
+			color: #1A1A1A;
+			line-height: 1.3;
+		}
+
+		.impact-link {
+			font-family: 'Noto Sans JP', sans-serif;
+			display: inline-block;
+			font-size: 14px;
+			color: #1A1A1A;
+			text-decoration: none;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-weight: 300;
+			border: 1px solid #1A1A1A;
+			padding: 12px;
+			transition: all 0.3s ease;
+		}
+
+		.impact-link:hover {
+			background-color: #1A1A1A;
+			color: white;
+		}
+
+		/* Impact Ticker */
+
+		.impact-ticker {
+			background-color: black;
+			color: white;
+			overflow: hidden;
+			border: 1px solid #1A1A1A;
+		}
+
+		.impact-ticker .ticker-wrapper {
+			display: flex;
+			white-space: nowrap;
+			animation: tickerAnimation 50s linear infinite;
+		}
+
+		.impact-ticker .ticker-content {
+			display: flex;
+			padding: 24px 0;
+		}
+
+		.impact-ticker .ticker-item {
+			display: inline-block;
+			padding: 0 40px;
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 24px;
+			font-weight: 300;
+		}
+
+		@keyframes tickerAnimation {
+			0% {
+				transform: translateX(0);
+			}
+
+			100% {
+				transform: translateX(-50%);
+			}
+		}
+
+		@media screen and (max-width: 1440px) {
+			.hero {
+				height: 600px;
+			}
+
+			.content-title-text {
+				font-size: 48px;
+			}
+
+			.shop-btn {
+				font-size: 16px;
+				padding: 16px 35px;
+				margin-bottom: 80px;
+			}
+
+			.content-title {
+				left: 60px;
+				padding: 0 40px;
+				margin-left: -40px;
+			}
+
+			.content-image {
+				width: 60%;
+				right: 15px;
+			}
+
+			.product-title {
+				font-size: 20px;
+			}
+
+			.bundles-grid {
+				grid-template-columns: repeat(4, 1fr);
+			}
+
+			.testimonial {
+				height: auto;
+				min-height: 600px;
+			}
+
+			.testimonial-title {
+				font-size: 36px;
+			}
+
+
+			.newsletter-title {
+				font-size: 36px;
+			}
+
+			.impact-grid {
+				grid-template-columns: repeat(3, 1fr);
+			}
+
+			.impact-title {
+				font-size: 36px;
+				margin-bottom: 40px;
+			}
+
+			.impact-ticker .ticker-item {
+				font-size: 20px;
+			}
+
+			.footer-content {
+				grid-template-columns: repeat(4, 1fr);
+				max-width: 600px;
+			}
+		}
+
+		.footer {
+			background-color: black;
+			color: white;
+			padding: 60px;
+			border: 1px solid #1A1A1A;
+		}
+
+		.footer-content {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 40px;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.footer-column h3 {
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 16px;
+			font-weight: 400;
+			margin-bottom: 20px;
+			color: white;
+		}
+
+		.footer-column ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.footer-column ul li {
+			margin-bottom: 12px;
+		}
+
+		.footer-column ul li a {
+			font-family: 'Noto Sans JP', sans-serif;
+			color: rgba(255, 255, 255, 0.6);
+			text-decoration: none;
+			font-size: 14px;
+			transition: color 0.3s ease;
+		}
+
+		.footer-column ul li a:hover {
+			color: white;
+		}
+
+		.video-link {
+			display: flex !important;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.video-link svg {
+			opacity: 0.6;
+			transition: opacity 0.3s ease;
+		}
+
+		.video-link:hover svg {
+			opacity: 1;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header">
+		<div class="logo">thankyou.</div>
+		<nav class="nav">
+			<a href="#" class="nav-item">Hand & Body</a>
+			<a href="#" class="nav-item">Cleaning</a>
+			<a href="#" class="nav-item">Bundles & Kits</a>
+			<a href="#" class="nav-item">Baby</a>
+			<a href="#" class="nav-item">Gifts & Merch</a>
+			<a href="#" class="nav-item">About</a>
+			<a href="#" class="nav-item">Impact</a>
+		</nav>
+		<div class="icons">
+			<div class="search-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<circle cx="11" cy="11" r="8"></circle>
+					<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+				</svg>
+			</div>
+			<div class="account-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+					<circle cx="12" cy="7" r="4"></circle>
+				</svg>
+			</div>
+			<div class="cart-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+					stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+					<line x1="3" y1="6" x2="21" y2="6"></line>
+					<path d="M16 10a4 4 0 0 1-8 0"></path>
+				</svg>
+			</div>
+		</div>
+	</header>
+
+	<!-- swiper -->
+	<div class="hero">
+		<div class="swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" style="background-color: #1A1A1A;">
+					<div class="product-container">
+						<div class="content-title">
+							<div class="content-title-text">
+								OUR PASSION<br>IS INNOVATIVE FOOD PRODUCTS<br>THAT STAND OUT,<br>OFFERING GREAT QUALITY AND GOOD TASTE
+							</div>
+							<a href="#" class="shop-btn">
+								WELCOME TO OUR WORLD OF FLAVOURS →</a>
+						</div>
+						<div class="content-image">
+							<img src="./swiper-new.jpg" alt="Slide 1"
+								style="width: 100%; height: 100%; object-fit: contain; position: absolute; right: 0;">
+							<!-- <img src="./swiper-new.jpg" alt="Slide 1"
+								style="width: 130%; height: 130%; object-fit: contain; position: absolute; right: -150px;"> -->
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div style="position: relative; width: 100%; height: 100%;">
+						<video width="1440" height="850" autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+							<source src="./shutterstock.mov" type="video/mp4">
+						</video>
+						<div class="content"
+							style="color: black; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2;">
+							<h1>Vanilla</h1>
+							<p style="font-size: 18px;">Formula Foods have an extensive range<br>of natural and artificial vanilla</p>
+							<a href="#" class="video-btn">Learn More</a>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div
+						style="position: relative; width: 100%; height: 100%; background-color: black; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+						<img src="./swiper-3.jpg" alt="Slide 3"
+							style="width: 100%; height: 100%; object-fit: cover; object-position: top -100px important!;">
+					</div>
+				</div>
+			</div>
+			<div class="swiper-controls">
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="promo-ticker">
+		<div class="ticker-wrapper">
+			<div class="ticker-content">
+				<div class="ticker-item">
+					<span></span> NEW ZEALAND OWNED & OPERATED
+				</div>
+				<div class="ticker-item">
+					<span></span> EST. 1987
+				</div>
+				<div class="ticker-item">
+					<span></span> NEW ZEALAND OWNED & OPERATED
+				</div>
+				<div class="ticker-item">
+					<span></span> EST. 1987
+				</div>
+			</div>
+			<div class="ticker-content">
+				<div class="ticker-item">
+					<span></span> NEW ZEALAND OWNED & OPERATED
+				</div>
+				<div class="ticker-item">
+					<span></span> EST. 1987
+				</div>
+				<div class="ticker-item">
+					<span></span> NEW ZEALAND OWNED & OPERATED
+				</div>
+				<div class="ticker-item">
+					<span></span> EST. 1987
+				</div>
+			</div>
+			<div class="ticker-content">
+				<div class="ticker-item">
+					<span></span> NEW ZEALAND OWNED & OPERATED
+				</div>
+				<div class="ticker-item">
+					<span></span> EST. 1987
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- products grid -->
+	<section class="products-grid">
+		<div class="product-card">
+			<div class="product-image">
+				<img src="./product-1.jpg" alt="Natural Origin Deodorant">
+			</div>
+			<div class="product-info">
+				<h3 class="product-title">Change the world and sweat less doing it</h3>
+				<p class="product-description">A 100% natural origin, 48-hour antiperspirant deodorant.</p>
+				<a href="#" class="product-link">SHOP NATURAL ORIGIN DEODORANT</a>
+			</div>
+		</div>
+		<div class="product-card">
+			<div class="product-image">
+				<img src="./product-2.jpg" alt="Forever Bottles">
+			</div>
+			<div class="product-info">
+				<h3 class="product-title">A new icon has arrived</h3>
+				<p class="product-description">Refillable, recyclable and made to love – forever.</p>
+				<a href="#" class="product-link">SHOP FOREVER BOTTLES</a>
+			</div>
+		</div>
+		<div class="product-card">
+			<div class="product-image">
+				<img src="./product-3.jpg" alt="Baby Wipes">
+			</div>
+			<div class="product-info">
+				<h3 class="product-title">Gentle and nurturing for little world-changers</h3>
+				<p class="product-description">Award-winning, natural, hypoallergenic baby wipes</p>
+				<a href="#" class="product-link">SHOP BABY</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- bundles -->
+	<section class="bundles">
+		<h2 class="bundles-title">Unlock up to 30% savings when you shop bundles</h2>
+		<div class="bundles-grid">
+			<div class="bundle-card">
+				<div class="bundle-image">
+					<img src="./bundle-1.jpg" alt="All in Home & Body">
+				</div>
+				<div class="bundle-info">
+					<h3 class="bundle-name">All in Home & Body</h3>
+					<p class="bundle-subtitle">Best Sellers</p>
+					<div class="bundle-price">From $169.68</div>
+					<div class="bundle-tag">SUBSCRIBE & SAVE 30%</div>
+				</div>
+			</div>
+			<div class="bundle-card">
+				<div class="bundle-image">
+					<img src="./bundle-2.jpg" alt="Home Cleaning Starter Kit">
+				</div>
+				<div class="bundle-info">
+					<h3 class="bundle-name">Home Cleaning Starter Kit</h3>
+					<p class="bundle-subtitle">Fragrance Free, Aluminium White</p>
+					<div class="bundle-price">From $73.64</div>
+					<div class="bundle-tag">SUBSCRIBE & SAVE 30%</div>
+				</div>
+			</div>
+			<div class="bundle-card">
+				<div class="bundle-image">
+					<img src="./bundle-3.jpg" alt="Hand & Body Wash 3L + 3">
+				</div>
+				<div class="bundle-info">
+					<h3 class="bundle-name">Hand & Body Wash 3L + 3</h3>
+					<p class="bundle-subtitle">Botanical Geranium, Rose & Wood</p>
+					<div class="bundle-price">From $88.93</div>
+					<div class="bundle-tag">SUBSCRIBE & SAVE 30%</div>
+				</div>
+			</div>
+			<div class="bundle-card">
+				<div class="bundle-image">
+					<img src="./bundle-1.jpg" alt="Hand & Body Wash Duo">
+				</div>
+				<div class="bundle-info">
+					<h3 class="bundle-name">Hand & Body Wash Duo</h3>
+					<p class="bundle-subtitle">Botanical Sweet Orange & Almond</p>
+					<div class="bundle-price">From $32.32</div>
+					<div class="bundle-tag">SUBSCRIBE & SAVE 30%</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- testimonial -->
+	<section class="testimonial">
+		<div class="testimonial-content">
+			<div class="rating">★★★★★</div>
+			<h2 class="testimonial-title">This product makes me like cleaning!</h2>
+			<p class="testimonial-text">Love this product. It's so handy being able to dilute and use on different surfaces.
+				It gives me peace of mind knowing that it's 100% natural!</p>
+		</div>
+	</section>
+
+	<!-- impact -->
+	<section class="impact">
+		<h2 class="impact-title">Every purchase contributes to projects that help end poverty.</h2>
+		<div class="impact-grid">
+			<div class="impact-card">
+				<div class="impact-image">
+					<img src="./impact-1.jpg" alt="Meet Nuru International">
+				</div>
+				<h3 class="impact-card-title">Meet Nuru International</h3>
+				<a href="#" class="impact-link">LEARN More</a>
+			</div>
+			<div class="impact-card">
+				<div class="impact-image">
+					<img src="./impact-2.jpg" alt="The giving system is broken">
+				</div>
+				<h3 class="impact-card-title">The giving system is broken, and we helped break it.</h3>
+				<a href="#" class="impact-link">LETTER FROM THE TRUSTEES</a>
+			</div>
+			<div class="impact-card">
+				<div class="impact-image">
+					<img src="./impact-3.jpg" alt="How do we give?">
+				</div>
+				<h3 class="impact-card-title">How do we give?</h3>
+				<a href="#" class="impact-link">OUR METHODOLOGY</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="newsletter">
+		<div class="newsletter-content">
+			<h2 class="newsletter-title">Sign up to our newsletter and get<br>20% off your next order.</h2>
+			<form class="newsletter-form">
+				<div class="form-row">
+					<input type="text" placeholder="First name *" class="form-input">
+					<input type="email" placeholder="Email address *" class="form-input">
+				</div>
+				<button type="submit" class="form-submit">JOIN NOW</button>
+				<label class="form-checkbox">
+					<input type="checkbox">
+					<span>Get updates on all things Thankyou! *</span>
+				</label>
+			</form>
+		</div>
+	</section>
+
+	<section class="impact-ticker">
+		<div class="ticker-wrapper">
+			<div class="ticker-content">
+				<div class="ticker-item">Together, we've created big change.</div>
+				<div class="ticker-item">$18.57M given to the end of extreme poverty.</div>
+				<div class="ticker-item">Together, we've created big change.</div>
+				<div class="ticker-item">$18.57M given to the end of extreme poverty.</div>
+			</div>
+			<div class="ticker-content">
+				<div class="ticker-item">Together, we've created big change.</div>
+				<div class="ticker-item">$18.57M given to the end of extreme poverty.</div>
+				<div class="ticker-item">Together, we've created big change.</div>
+				<div class="ticker-item">$18.57M given to the end of extreme poverty.</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="footer-content">
+			<div class="footer-column">
+				<h3>Help</h3>
+				<ul>
+					<li><a href="#">Contact Us</a></li>
+					<li><a href="#">My Subscription</a></li>
+					<li><a href="#">Delivery</a></li>
+					<li><a href="#">Returns & Refunds</a></li>
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">Privacy</a></li>
+					<li><a href="#">Terms Of Use</a></li>
+					<li><a href="#">Wholesale</a></li>
+				</ul>
+			</div>
+			<div class="footer-column">
+				<h3>Shop</h3>
+				<ul>
+					<li><a href="#">Shop All</a></li>
+					<li><a href="#">Hand & Body</a></li>
+					<li><a href="#">Cleaning</a></li>
+					<li><a href="#">Baby Wipes</a></li>
+					<li><a href="#">Chapter One</a></li>
+				</ul>
+			</div>
+			<div class="footer-column">
+				<h3>About</h3>
+				<ul>
+					<li><a href="#">Our Mission</a></li>
+					<li><a href="#">Our Team</a></li>
+					<li><a href="#">Impact</a></li>
+					<li><a href="#">All-For</a></li>
+					<li><a href="#">What We Avoid</a></li>
+					<li><a href="#">Journal</a></li>
+				</ul>
+			</div>
+			<div class="footer-column">
+				<h3>Social</h3>
+				<ul>
+					<li><a href="#">Instagram</a></li>
+					<li><a href="#">Facebook</a></li>
+					<li><a href="#">Twitter</a></li>
+					<li><a href="#" class="video-link">
+							<span>YouTube</span>
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M21 12L13 4V8C13 8 6 10 4 17C4 17 7 14 13 14V18L21 12Z" stroke="currentColor"
+									stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</a></li>
+					<li><a href="#">TikTok</a></li>
+					<li><a href="#">Pinterest</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+
+	<div class="hero-2">
+
+	</div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<script>
+	const swiper = new Swiper('.swiper', {
+		loop: true,
+		autoplay: {
+			delay: 800000,
+			disableOnInteraction: false,
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+			type: 'bullets',
+			renderBullet: function (index, className) {
+				return '<span class="' + className + '"></span>';
+			},
+		},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+	});
+</script>
+
+</html>
